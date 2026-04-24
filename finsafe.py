@@ -1,15 +1,8 @@
-"""
-FinSafe - Misleading Financial Content Detection
-"""
-
+#FinSafe - Misleading Financial Content Detection
 import streamlit as st
 import speech_recognition as sr
 from textblob import TextBlob
 import os
-
-# ============================================
-# SEBI-INSPIRED RISK KEYWORDS
-# ============================================
 
 HIGH_RISK_KEYWORDS = [
     "guaranteed returns", "double your money", "risk free", "risk-free",
@@ -21,12 +14,9 @@ MEDIUM_RISK_KEYWORDS = [
     "hot stock", "breakout", "wealth creation"
 ]
 
-# ============================================
-# TEXT ANALYSIS FUNCTION
-# ============================================
-
+# Text Analysis Function
 def analyze_text(text):
-    """Analyze text for risk level using sentiment + keywords"""
+    """Analyse text for risk level using sentiment + keywords"""
     
     if not text or text.strip() == "":
         return None
@@ -35,7 +25,7 @@ def analyze_text(text):
     
     # Sentiment analysis
     blob = TextBlob(text)
-    sentiment_score = blob.sentiment.polarity  # -1 (negative) to +1 (positive)
+    sentiment_score = blob.sentiment.polarity
     
     if sentiment_score > 0:
         sentiment_label = "Positive"
@@ -80,10 +70,7 @@ def analyze_text(text):
         "explanation": explanation
     }
 
-# ============================================
-# AUDIO TO TEXT (No exceptions)
-# ============================================
-
+# Audio to Text
 def audio_to_text(audio_file_path):
     """Convert .wav audio file to text"""
     
@@ -95,10 +82,7 @@ def audio_to_text(audio_file_path):
     text = recognizer.recognize_google(audio_data)
     return text
 
-# ============================================
-# STREAMLIT UI (Simplified)
-# ============================================
-
+# Streanlit UI
 st.set_page_config(page_title="FinSafe", page_icon="🔒")
 st.title("🔒 FinSafe - Misleading Financial Content Detection")
 st.markdown("*Based on SEBI guidelines | Audio support: .wav files only*")
