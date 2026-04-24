@@ -1,4 +1,5 @@
 # FinSafe - Misleading Financial Content Detection
+[Live working site] (https://finsafe-investsafe.streamlit.app/)
 
 ## Overview
 FinSafe detects misleading financial content using NLP and SEBI guidelines.
